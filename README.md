@@ -6,6 +6,7 @@ LiveTranslator
 Version
 ---
 1.0.1 => nette 2.1.*
+
 1.0.2 => nette 2.2.*
 
 LiveTranslator is tool for [Nette Framework](http://nette.org/en/).
