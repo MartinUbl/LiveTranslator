@@ -157,7 +157,7 @@ class Panel extends Nette\Object implements Nette\Diagnostics\IBarPanel
 	{
 		$template = new Nette\Templating\FileTemplate($file);
 		$latte = new Nette\Latte\Engine;
-		Nette\Latte\Macros\CoreMacros::install($latte->getCompiler());
+		\Latte\Macros\CoreMacros::install($latte->getCompiler());
 		$template->registerHelperLoader('Nette\Templating\Helpers::loader')
 			->registerHelper('ordinal', function($n){
 				switch (substr($n, -1)) {

@@ -1,13 +1,12 @@
-[![Latest Stable Version](https://poser.pugx.org/vladahejda/livetranslator/v/stable.png)](https://packagist.org/packages/vladahejda/livetranslator)
-[![Total Downloads](https://poser.pugx.org/vladahejda/livetranslator/downloads.png)](https://packagist.org/packages/vladahejda/livetranslator)
-[![Montly Downloads](https://poser.pugx.org/vladahejda/livetranslator/d/monthly.png)](https://packagist.org/packages/vladahejda/livetranslator)
-[![Daily Downloads](https://poser.pugx.org/vladahejda/livetranslator/d/daily.png)](https://packagist.org/packages/vladahejda/livetranslator)
-
-
 [DEMO](http://livetranslator.hejdav.cz/)
 
 LiveTranslator
 ===
+
+Version
+---
+1.0.1 => nette 2.1.*
+1.0.2 => nette 2.2.*
 
 LiveTranslator is tool for [Nette Framework](http://nette.org/en/).
 
