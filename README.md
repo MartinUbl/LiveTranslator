@@ -3,11 +3,6 @@
 LiveTranslator
 ===
 
-Version
----
-1.0.1 => nette 2.1.*
-
-1.0.2 => nette 2.2.*
 
 LiveTranslator is tool for [Nette Framework](http://nette.org/en/).
 
@@ -18,6 +13,11 @@ via panel in debug bar. Works with the Nette 2.
 parts (especially [TranslationPanel](http://forum.nette.org/cs/4399-nette-translation-panel-preklady-primo-v-prohlizeci))
 and changes other, mainly the storage where translations are saved.*
 
+Version
+---
+1.0.1 => nette 2.1.*
+
+1.0.2 => nette 2.2.*
 
 Installation
 ---
