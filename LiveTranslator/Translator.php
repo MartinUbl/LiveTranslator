@@ -44,7 +44,7 @@ class Translator extends Nette\Object implements Nette\Localization\ITranslator
 	private $session;
 
 	/** @var Nette\Application\Application */
-	private $application;
+	private $application = null;
 
 
 	/**
@@ -53,13 +53,12 @@ class Translator extends Nette\Object implements Nette\Localization\ITranslator
 	 * @param Nette\Http\Session $session
 	 * @param Nette\Application\Application $application
 	 */
-	public function __construct($defaultLang, ITranslatorStorage $translatorStorage, Nette\Http\Session $session, Nette\Application\Application $application)
+	public function __construct($defaultLang, ITranslatorStorage $translatorStorage, Nette\Http\Session $session)
 	{
 		$this->setDefaultLang($defaultLang);
 		$this->translatorStorage = $translatorStorage;
 		$session->start();
 		$this->session = $session;
-		$this->application = $application;
 	}
 
 
@@ -71,6 +70,11 @@ class Translator extends Nette\Object implements Nette\Localization\ITranslator
 		return $this->namespace;
 	}
 
+	protected function ensureApplicationInjected()
+	{
+		if (!$this->application)
+			$this->application = \Nette\Environment::getService('application');
+	}
 
 	/**
 	 * @return string
@@ -81,6 +85,7 @@ class Translator extends Nette\Object implements Nette\Localization\ITranslator
 			return $this->lang;
 		}
 		if ($this->presenterLanguageParam) {
+			$this->ensureApplicationInjected();
 			$presenter = $this->application->presenter;
 			if (isset($presenter->{$this->presenterLanguageParam})) {
 				$this->setCurrentLang($presenter->{$this->presenterLanguageParam});
@@ -159,6 +164,7 @@ class Translator extends Nette\Object implements Nette\Localization\ITranslator
 		if (!$this->presenterLanguageParam) {
 			return NULL;
 		}
+		$this->ensureApplicationInjected();
 		return $this->application->presenter->link('this', array($this->presenterLanguageParam => $switchLang));
 	}
 
