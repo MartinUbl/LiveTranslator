@@ -54,12 +54,15 @@ class Translator implements Nette\Localization\ITranslator
 	 * @param Nette\Http\Session $session
 	 * @param Nette\Application\Application $application
 	 */
-	public function __construct($defaultLang, ITranslatorStorage $translatorStorage, Nette\Http\Session $session)
+	public function __construct($defaultLang, ITranslatorStorage $translatorStorage, Nette\Http\Session $session = null, Nette\Application\Application $application = null)
 	{
 		$this->setDefaultLang($defaultLang);
 		$this->translatorStorage = $translatorStorage;
-		$session->start();
-		$this->session = $session;
+        if ($session) {
+		    $session->start();
+		    $this->session = $session;
+        }
+        $this->application = $application;
 	}
 
 
@@ -440,7 +443,11 @@ class Translator implements Nette\Localization\ITranslator
 	protected function getSessionSection()
 	{
 		$ns = $this->namespace ?: 'default';
-		return $this->session->getSection("LT-$ns");
+        if ($this->session) {
+		    return $this->session->getSection("LT-$ns");
+        } else {
+            return new \stdClass;
+        }
 	}
 
 
