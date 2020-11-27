@@ -90,7 +90,7 @@ class Translator implements Nette\Localization\ITranslator
 		}
 		if ($this->presenterLanguageParam) {
 			$this->ensureApplicationInjected();
-			$presenter = $this->application->presenter;
+			$presenter = $this->application->getPresenter();
 			if (isset($presenter->{$this->presenterLanguageParam})) {
 				$this->setCurrentLang($presenter->{$this->presenterLanguageParam});
 				return $this->lang;
@@ -289,8 +289,9 @@ class Translator implements Nette\Localization\ITranslator
 	 * @return string
 	 * @throws TranslatorException
 	 */
-	public function translate($string, $count = 1)
+	public function translate($string, ...$parameters): string
 	{
+        $count = $parameters;
 		$hasVariants = FALSE;
 		if (is_array($string)) {
 			$hasVariants = TRUE;
